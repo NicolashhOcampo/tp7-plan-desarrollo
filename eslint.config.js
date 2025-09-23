@@ -6,6 +6,8 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   globalIgnores(['dist']),
+
+  // Config general para todo JS/JSX
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -17,7 +19,7 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: {
         ...globals.browser,
-        ...globals.jest, // <-- Agregar esto
+        ...globals.jest,
       },
       parserOptions: {
         ecmaVersion: 'latest',
@@ -27,6 +29,17 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+
+  // Overrides para tests de Node/Jest
+  {
+    files: ['src/test/**/*.js', 'src/test/**/*.jsx'],
+    languageOptions: {
+      globals: {
+        ...globals.node,  // permite 'process'
+        ...globals.jest,  // permite 'describe', 'test', etc.
+      },
     },
   },
 ])

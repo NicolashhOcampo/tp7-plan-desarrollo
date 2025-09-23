@@ -2,18 +2,39 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on PR
-on: pull_request
+
+on: 
+  pull_request
+
 permissions:
   checks: write
   contents: read
   pull-requests: write
+
 jobs:
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+
+      # Instalar dependencias
+      - name: Instalar dependencias
+        run: npm ci
+
+      # Ejecutar ESLint
+      - name: Lint
+        run: npm run lint
+
+      # Ejecutar tests
+      - name: Ejecutar tests
+        run: npm test
+
+      # Construir la app solo si lint y tests pasaron
+      - name: Build
+        run: npm run build
+
+      # Deploy preview a Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
