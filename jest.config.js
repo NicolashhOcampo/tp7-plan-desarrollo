@@ -1,6 +1,6 @@
 export default {
     testEnvironment: "jsdom",
-    setupFilesAfterEnv: ["<rootDir>/src/test/Nota.test.jsx"],
+    setupFilesAfterEnv: [],
     transform: {
         "^.+\\.(js|jsx)$": "babel-jest"
     },
