@@ -35,4 +35,6 @@ describe("Notas - flujo completo de integridad", () => {
         // Verificar eliminación
         expect(screen.queryByText("Nota editada")).not.toBeInTheDocument();
     });
+
+    //comentario de prueba
 });
