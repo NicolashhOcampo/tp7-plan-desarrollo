@@ -9,6 +9,9 @@ export default function DuckForm({ initialDuck, onSave }) {
         if (initialDuck) {
             setImage(initialDuck.image || "");
             setDescription(initialDuck.description || "");
+        } else {
+            setImage("");
+            setDescription("");
         }
     }, [initialDuck]);
 

@@ -1,4 +1,4 @@
-// Al inicio de tu Ducks.test.jsx
+// Al inicio de Ducks.test.jsx
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { DucksManager } from "../components/DucksManager";
@@ -45,11 +45,6 @@ describe("DucksManager - Test de Integridad", () => {
         const deleteButton = screen.getByText("Eliminar");
         fireEvent.click(deleteButton);
 
-        // Con el bug actual, el pato eliminado sigue presente
-        expect(screen.getByText("Pato Editado")).toBeInTheDocument();
-
-        // --- Simulación de fix (para comprobar el flujo correcto) ---
-        // Si arreglamos el bug, el pato debería desaparecer:
-        // expect(screen.queryByText("Pato Editado")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pato Editado")).not.toBeInTheDocument();
     });
 });
