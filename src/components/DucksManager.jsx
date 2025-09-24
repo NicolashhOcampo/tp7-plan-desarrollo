@@ -14,10 +14,8 @@ export const DucksManager = () => {
         }
     };
 
-    // ERROR INTENCIONAL: eliminación rota
     const handleDelete = (duckId) => {
-        // ERROR: usamos 'd.id === duckId', debería ser 'd.id !== duckId'
-        setDucks(ducks.filter((d) => d.id === duckId));
+        setDucks(ducks.filter((d) => d.id !== duckId));
         if (editingDuck && editingDuck.id === duckId) {
             setEditingDuck(null);
         }
@@ -28,7 +26,7 @@ export const DucksManager = () => {
             <DuckForm initialDuck={editingDuck} onSave={handleSave} />
 
             <h2 className="text-2xl font-bold">Lista de Patos</h2>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
                 {ducks.map((duck) => (
                     <div
                         key={duck.id}
@@ -37,7 +35,7 @@ export const DucksManager = () => {
                         <img
                             src={duck.image}
                             alt={duck.description}
-                            className="w-full h-40 object-cover rounded-lg"
+                            className="w-full h-40 object-contain rounded-lg"
                         />
                         <p>{duck.description}</p>
                         <div className="flex gap-2">
