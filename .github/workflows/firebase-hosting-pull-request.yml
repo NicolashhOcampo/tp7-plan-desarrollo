@@ -22,8 +22,8 @@ jobs:
     
     - name: 📦 Instalar dependencias
       run: npm ci
-    
-    - name: 📈 Verificar umbral de cobertura
+
+    - name: 📈 Verificar todos los tests
       run: |
         echo "Verificando tests..."
         npm run test
