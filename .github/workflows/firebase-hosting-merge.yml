@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: 🧪 Tests & Coverage
+    name: Tests
     runs-on: ubuntu-latest
     
     steps:
@@ -26,6 +26,7 @@ jobs:
         npm run test
 
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -41,6 +42,7 @@ jobs:
         npm run lint
 
   build_and_deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     needs: [test, lint]
     steps:
