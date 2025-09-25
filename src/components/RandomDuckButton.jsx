@@ -24,7 +24,7 @@ export const RandomDuckButton = () => {
         <div className="flex flex-col items-center mt-6 space-y-4">
             <button
                 onClick={fetchRandomDuck}
-                className="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 cursor-pointer"
+                className="bg-yellow-500 text-white px-3 py-2 rounded-lg hover:bg-yellow-600 cursor-pointer"
             >
                 Obtener pato al azar
             </button>
