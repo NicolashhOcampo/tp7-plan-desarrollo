@@ -26,7 +26,7 @@ export const DucksManager = () => {
             <DuckForm initialDuck={editingDuck} onSave={handleSave} />
 
             <h2 className="text-2xl font-bold">Lista de Patos</h2>
-            <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
+            <div className="grid gap-5 grid-cols-2 md:grid-cols-4">
                 {ducks.map((duck) => (
                     <div
                         key={duck.id}
